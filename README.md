@@ -1,4 +1,4 @@
-# ZJGSU-Latex-Template
+# ZJGSU-Report-Latex-Template
 
 文件 latex模板 是浙江工商大学统计与数学学院崔峰老师所编写的Latex模板。
 
