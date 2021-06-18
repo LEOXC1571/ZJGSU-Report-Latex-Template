@@ -1,0 +1,86 @@
+\documentclass{zjgsureport}
+\major{数据科学与大数据技术；数学与应用数学}
+\name{张三；李四}
+% \title{matlab程序设计}
+\stuid{1902110110；1902030110}
+\college{统计与数学学院}
+\task{文稿；代码、作图}
+\date{\zhtoday}
+\expname{线性搜索准则的对比}%课程作业/报告的题目
+\course{最优化及其应用}%课程名称
+\teacher{崔峰}
+
+\renewcommand{\abstractname}{\large 摘要\\}%重定义摘要二字的大小
+\begin{document}
+
+\makecover  %生成封面
+
+% \input{abstract.tex}%摘要
+
+\thispagestyle{empty}
+\tableofcontents
+\newpage
+\setcounter{page}{1}
+
+\section{问题重述}
+
+创意平板折叠桌注重于表达木制品的优雅和设计师所想要强调的自动化与功能性。为了增大有效使用面积。设计师以长方形木板的宽为直径截取了一个圆形作为桌面，又将木板剩余的面积切割成了若干个长短不一的木条，每根木条的长度为平板宽到圆上一点的距离，分别用两根钢筋贯穿两侧的木条，使用者只需提起木板的两侧，便可以在重力的作用下达到自动升起的效果，相互对称的木条宛如下垂的桌布，精密的制作工艺配以质朴的木材，让这件工艺品看起来就像是工业革命时期的机器。
+
+\subsection{问题的提出}
+
+围绕创意平板折叠桌的动态变化过程、设计加工参数，本文依次提出如下问题：
+
+（1）给定长方形平板尺寸 （$120 cm \times 50 cm \times 3 cm$），每根木条宽度（2.5 cm），连接桌腿木条的钢筋的位置，折叠后桌子的高度（53 cm）。要求建立模型描述此折叠桌的动态变化过程，并在此基础上给出此折叠桌的设计加工参数和桌脚边缘线的数学描述。
+
+（2）......
+
+\section{模型的假设}
+
+\begin{itemize}
+    \item 忽略实际加工误差对设计的影响；
+    \item 木条与圆桌面之间的交接处缝隙较小，可忽略；
+    \item 钢筋强度足够大，不弯曲；
+    \item 假设地面平整。
+\end{itemize}
+
+
+\newpage
+\begin{thebibliography}{99}
+    \bibitem{xu}徐树芳. 数值线性代数[M]. 北京: 高等教育出版社, 2013.
+    \bibitem{mestoy}MESTOY P R, DUFF I S, KOSTER J, et al. A fully asynchronous multifrontal solver using distributed dynamic scheduling[J]. SIAM Journal on Matrix Analysis and Applications, 2001, 23(1): 15-41.
+\end{thebibliography}
+
+\appendix
+
+\newpage
+\section{附录一：matlab代码}
+\begin{lstlisting}[language=matlab]
+[X, Y] = meshgrid(0.01:0.01:1, 0.01:0.01:1); 
+Zfun =@(x,y)12.5*x.*log10(x).*y.*(y-1)+exp(-((25 ... 
+*x - 25/exp(1)).^2+(25*y-25/2).^2).^3)./25; 
+Z = Zfun(X,Y); 
+figure; 
+surf(Y,Z,X,'FaceColor',[1 0.75 0.65],'linestyle','none'); 
+hold on 
+surf(Y+0.98,Z,X,'FaceColor',[1 0.75 0.65],'linestyle','none'); 
+axis equal; 
+view([116 30]); 
+camlight; 
+lighting phong; % 设置光照和光照模式
+\end{lstlisting}
+
+\section{附录二：python代码}
+\begin{lstlisting}[language=python]
+def run():
+from sko.GA import GA_TSP
+import numpy as np
+from scipy import spatial
+from numpy.linalg import norm
+import cvxpy as cp
+import pandas as pd 
+#python原始代码
+data=pd.read_excel("3.xlsx")
+\end{lstlisting}
+
+
+\end{document}
